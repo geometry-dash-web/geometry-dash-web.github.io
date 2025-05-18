@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Geometry Dash Web</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; overflow: hidden;
+      background: #222;
+      font-family: monospace;
+      user-select: none;
+    }
+    #gameCanvas {
+      display: block;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      margin: 0 auto;
+      image-rendering: pixelated;
+      border: 2px solid #555;
+    }
+    #progressBarContainer {
+      position: fixed;
+      top: 10px; left: 10px;
+      width: 300px;
+      height: 20px;
+      border: 2px solid #888;
+      background: #333;
+      border-radius: 10px;
+    }
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #f00, #fa0);
+      border-radius: 10px;
+      transition: width 0.2s ease;
+    }
+    #progressText {
+      position: fixed;
+      top: 35px; left: 10px;
+      color: #eee;
+      font-size: 14px;
+      font-weight: bold;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="640" height="360"></canvas>
+  <div id="progressBarContainer">
+    <div id="progressBar"></div>
+  </div>
+  <div id="progressText">0%</div>
+
+  <script src="game.js"></script>
+</body>
+</html>
