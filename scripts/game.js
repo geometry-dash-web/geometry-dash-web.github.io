@@ -43,7 +43,7 @@ function update() {
     // Level completion check
     if (player.x >= levelLength) {
         alert("Level Complete!");
-        window.location.href = "index.html";
+        window.location.href = "menu.html";
     }
 }
 
