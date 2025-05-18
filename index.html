@@ -1,20 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Rhythm Dash - Menu</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <title>Rhythm Dash - Loading</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: url('background1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: -1;
+        }
+
+        /* Logo image */
+        #logo {
+            width: 300px;       /* Adjust to your liking */
+            height: auto;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        #progress-container {
+            width: 70%;
+            height: 30px;
+            background-color: #333;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 10px #FFD700;
+            margin-bottom: 20px;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transition: width 0.3s ease;
+        }
+
+        #loading-text {
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+        }
+    </style>
 </head>
 <body>
-    <div class="menu-container">
-        <h1>Rhythm Dash</h1>
-        <button onclick="window.location.href='game.html'">Play</button>
+    <img id="logo" src="assets/logo.png" alt="Rhythm Dash Logo" />
 
-        <div class="icon-bar">
-            <div class="icon icon-sound" title="Sound"></div>
-            <div class="icon icon-music" title="Music"></div>
-            <div class="icon icon-settings" title="Settings"></div>
-        </div>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
     </div>
+
+    <div id="loading-text">Loading... 0%</div>
+
+    <script>
+        let progressBar = document.getElementById('progress-bar');
+        let loadingText = document.getElementById('loading-text');
+        let progress = 0;
+
+        let interval = setInterval(() => {
+            progress += Math.floor(Math.random() * 10) + 5;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                loadingText.textContent = "Loading complete!";
+                setTimeout(() => {
+                    window.location.href = "menu.html";
+                }, 800);
+            } else {
+                loadingText.textContent = `Loading... ${progress}%`;
+            }
+            progressBar.style.width = progress + '%';
+        }, 300);
+    </script>
 </body>
 </html>
