@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+}
+
+.menu-container {
+    padding-top: 50px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background: #222;
+}
