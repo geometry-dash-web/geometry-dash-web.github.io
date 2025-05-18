@@ -1,24 +1,52 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #111;
-    color: #fff;
-    text-align: center;
+  font-family: sans-serif;
+  text-align: center;
+  background: #222;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-container {
-    padding-top: 50px;
+  margin-top: 100px;
 }
 
 button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
-    cursor: pointer;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #44c767;
+  color: white;
 }
 
-canvas {
-    display: block;
-    margin: 0 auto;
-    background: #222;
+.icon-bar {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  background-image: url('assets/images/ui-icons.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Specific icons based on their position in the sprite sheet */
+.icon-sound {
+  background-position: 0px 0px; /* top-left icon */
+}
+
+.icon-music {
+  background-position: -64px 0px; /* next icon in row */
+}
+
+.icon-settings {
+  background-position: -128px 0px; /* third icon in row */
 }
