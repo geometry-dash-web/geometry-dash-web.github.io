@@ -1,20 +1,20 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 800;
-canvas.height = 400;
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 // Player setup
 let player = { x: 50, y: 300, width: 30, height: 30, vy: 0, jumping: false };
 let gravity = 0.6;
-let platforms = [{ x: 0, y: 350, width: 2000, height: 50 }];
-
-// Timer setup
-const startTime = Date.now();
-const duration = 90 * 1000; // 1:30
+let platforms = [{ x: 0, y: 350, width: 2000, height: 50 }]; // Total level width
 
 // Progress bar element
-const progressBar = document.querySelector('.progress-bar');
+const progressBar = document.querySelector('#level-progress-bar'); // Use ID if it's the top bar
 
 function update() {
     // Apply gravity
@@ -35,13 +35,13 @@ function update() {
         }
     }
 
-    // Update progress bar
-    const elapsed = Date.now() - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    progressBar.style.width = (progress * 100) + "%";
+    // Update progress bar based on player position
+    const levelLength = platforms[0].width;
+    const playerProgress = Math.min(player.x / levelLength, 1);
+    progressBar.style.width = (playerProgress * 100) + "%";
 
-    // Check for level completion
-    if (elapsed >= duration) {
+    // Level completion check
+    if (player.x >= levelLength) {
         alert("Level Complete!");
         window.location.href = "index.html";
     }
@@ -57,7 +57,7 @@ function draw() {
     // Draw platforms
     ctx.fillStyle = "gray";
     for (let platform of platforms) {
-        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+        ctx.fillRect(platform.x - player.x + 50, platform.y, platform.width, platform.height);
     }
 }
 
@@ -74,5 +74,10 @@ document.addEventListener("keydown", (e) => {
         player.jumping = true;
     }
 });
+
+// Simulate movement to the right (auto-run)
+setInterval(() => {
+    player.x += 5;
+}, 50);
 
 gameLoop();

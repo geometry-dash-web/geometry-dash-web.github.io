@@ -50,3 +50,25 @@ button {
 .icon-settings {
   background-position: -128px 0px; /* third icon in row */
 }
+
+#level-progress-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 12px;
+    background: #333;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #f39c12;
+    z-index: 1000;
+}
+
+#level-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+    transition: width 0.1s linear;
+}
+
