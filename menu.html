@@ -2,19 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rhythm Dash - Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Dash</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="menu-container">
-        <h1>Rhythm Dash</h1>
-        <button onclick="window.location.href='game.html'">Play</button>
-
-        <div class="icon-bar">
-            <div class="icon icon-sound" title="Sound"></div>
-            <div class="icon icon-music" title="Music"></div>
-            <div class="icon icon-settings" title="Settings"></div>
+    <div class="container">
+        <div class="menu-screen">
+            <h1>Rhythm Dash</h1>
+            <button id="play-button">Play</button>
+            <button id="sound-button">Sound: ON</button>
+            <button id="settings-button">Settings</button>
+        </div>
+        <div class="game-screen hidden">
+            <canvas id="gameCanvas" width="800" height="300"></canvas>
+            <div class="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+        </div>
+        <div class="game-over-screen hidden">
+            <h2>Game Over</h2>
+            <button id="restart-button">Restart</button>
+        </div>
+        <div class="level-complete-screen hidden">
+            <h2>Level Complete!</h2>
+            <button id="next-level-button">Play Again</button>
         </div>
     </div>
+    <audio id="game-audio" loop></audio>
+    <script src="script.js"></script>
 </body>
 </html>
