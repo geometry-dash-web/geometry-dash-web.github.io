@@ -1,88 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Rhythm Dash - Loading</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: url('background1.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6);
-            z-index: -1;
-        }
-
-        /* Logo image */
-        #logo {
-            width: 300px;       /* Adjust to your liking */
-            height: auto;
-            margin-bottom: 40px;
-            display: block;
-        }
-
-        #progress-container {
-            width: 70%;
-            height: 30px;
-            background-color: #333;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 0 10px #FFD700;
-            margin-bottom: 20px;
-        }
-
-        #progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            transition: width 0.3s ease;
-        }
-
-        #loading-text {
-            font-size: 1.2rem;
-            letter-spacing: 1.5px;
-        }
-    </style>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Dash</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
 <body>
-    <img id="logo" src="assets/logo.png" alt="Rhythm Dash Logo" />
-
-    <div id="progress-container">
-        <div id="progress-bar"></div>
+    <div id="menu-screen" class="screen active">
+        <h1>Rhythm Dash</h1>
+        <button id="play-button">Play</button>
+        <div class="icon-bar">
+            <button id="sound-icon" class="icon-button">🔊</button> <button id="music-icon" class="icon-button">🎵</button> <button id="settings-icon" class="icon-button">⚙️</button>
+        </div>
     </div>
 
-    <div id="loading-text">Loading... 0%</div>
+    <div id="game-screen" class="screen">
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+    </div>
 
-    <script>
-        let progressBar = document.getElementById('progress-bar');
-        let loadingText = document.getElementById('loading-text');
-        let progress = 0;
+    <div id="game-over-screen" class="screen overlay">
+        <div class="overlay-content">
+            <h2>Game Over</h2>
+            <button id="restart-button-gameover">Restart</button>
+        </div>
+    </div>
 
-        let interval = setInterval(() => {
-            progress += Math.floor(Math.random() * 10) + 5;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
-                loadingText.textContent = "Loading complete!";
-                setTimeout(() => {
-                    window.location.href = "menu.html";
-                }, 800);
-            } else {
-                loadingText.textContent = `Loading... ${progress}%`;
-            }
-            progressBar.style.width = progress + '%';
-        }, 300);
-    </script>
+    <div id="level-complete-screen" class="screen overlay">
+        <div class="overlay-content">
+            <h2>Level Complete!</h2>
+            <button id="restart-button-complete">Play Again</button>
+        </div>
+    </div>
+
+    <audio id="background-music" loop></audio>
+    <script src="game.js"></script>
 </body>
 </html>
